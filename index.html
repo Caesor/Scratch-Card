@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=1">
+    <meta content="telephone=no" name="format-detection" />
+	<title>Scratch Card</title>
+<style>
+    body,section,canvas{margin: 0;padding: 0;}
+    body{width: 100%;height:100%;background-image: url(resource/images/streat.png);background-size: 100% 100%;background-repeat: no-repeat;}
+</style>
+</head>
+<body>
+	<canvas id="canvas"></canvas>
+
+	<script src="resource/scratch.js"></script>
+	<script>
+		document.body.style.height = window.innerHeight + "px";
+
+		var canvas = document.getElementById("canvas");
+		canvas.height = window.innerHeight;
+		canvas.width = window.innerWidth;
+		var scratch_layer = new ScratchMask(canvas, "resource/images/night.png", canvas.width, canvas.height);
+
+	</script>
+</body>
+</html>
