@@ -1,27 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
+    <title>Hello 2015</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=1">
     <meta content="telephone=no" name="format-detection" />
-	<title>Scratch Card</title>
-<style>
-    body,section,canvas{margin: 0;padding: 0;}
-    body{width: 100%;height:100%;background-image: url(resource/images/streat.png);background-size: 100% 100%;background-repeat: no-repeat;}
-</style>
+    <link rel="stylesheet" type="text/css" href="resource/lib/jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="resource/common.css">
+    <link rel="stylesheet" type="text/css" href="resource/layout.css">
 </head>
+
 <body>
-	<canvas id="canvas"></canvas>
+	<!--  loading -->
+	<div class="loading">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
 
-	<script src="resource/scratch.js"></script>
-	<script>
-		document.body.style.height = window.innerHeight + "px";
+    <canvas id="canvas"></canvas>
 
-		var canvas = document.getElementById("canvas");
-		canvas.height = window.innerHeight;
-		canvas.width = window.innerWidth;
-		var scratch_layer = new ScratchMask(canvas, "resource/images/night.png", canvas.width, canvas.height);
+	<div id="fullpage">
+        <div class="music_control play">
+            <p class="music_state">开启</p>
+            <span class="music_icon"></span>
+        </div>
+        <div class="swipe_tip">
+            <p></p>
+        </div>
 
-	</script>
+        <!-- 首页 -->
+        <div class="section" id="section1">
+            <h1></a></h1>
+        </div>
+
+
+        <div class="section" id="section2">
+            
+        </div>
+
+        <div class="section" id="section3">
+            <h1></h1>
+        </div>
+
+        <div class="section" id="section4">
+            <h1></h1>
+        </div>
+
+        <div class="section" id="section5">
+            <h1></h1>
+        </div>
+
+        <div class="section" id="section6">
+            <h1></h1>
+        </div>
+
+        <audio src="resource/Secret_Base.mp3" id="bgm"></audio>
+    </div>
+
+    <script src="http://www.playwx.com/hd/static/common/js/jquery-1.10.2.min.js"></script>
+    <script src="resource/lib/jquery.easings.min.js"></script>
+    <script src="resource/lib/jquery.fullPage.min.js"></script>
+    <script src="resource/lib/scratch.js"></script>
+    <script>
+        $(function(){
+
+            var canvas = document.getElementById("canvas");
+            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth;
+            var scratch_layer = new ScratchMask(canvas, "resource/images/2014.png", canvas.width, canvas.height,
+                function(){
+                    $('.swipe_tip,.music_control').show();
+                    
+                    $('#fullpage').show().fullpage({
+                        verticalCentered: false,
+
+                        //控制锚和页面切换间效果
+                        // anchors: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8'],
+                        // easing: 'easeOutBack',
+
+                        //头部底部的滑动衔接
+                        continuousVertical: true,
+                        slidesNavigation: true,
+                        slidesNavPosition: 'bottom',
+                        //开始播放音乐
+                        afterRender: function() {
+                            $('#bgm')[0].play();
+                        },
+                    });
+                }
+            );
+
+            $(".loading").remove();
+
+        })
+        
+    </script>
+    <script src="resource/common.js"></script>
 </body>
+
 </html>
